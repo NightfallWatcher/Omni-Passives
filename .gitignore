@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temp
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+
+# Archives/build artifacts
+*.zip
+*.7z
+*.rar
+
+# Secrets/env/certs
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+secrets.*
+credentials.*
+
+# Editor/project metadata
+.idea/
+.vscode/
+*.code-workspace

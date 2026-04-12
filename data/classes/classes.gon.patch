@@ -1,0 +1,905 @@
+﻿Fighter {
+    innate_passives.append {
+        HealthRegenUp 2
+        SizeScale .6
+        AddTemporaryEffectsToBasicAttack {
+            Fury 75
+        }
+        MoveQuivered 2
+        ExplodeOverkilledEnemies 2
+        StatusOnKill {
+            EquipPermanentItem BoneClub
+        }
+        BonusAbility FighterBonusThrow
+        FrontstabCritChance 100%
+        StatusOnTookDamage {
+            IntelligenceUp -2
+        }
+        PassiveAtStatThreshold {
+            mode less_or_equal
+            threshold {
+                int 4
+            }
+            passives {
+                StrengthUp 2
+                AddStatusToBasicAttack {
+                    Bruise 1
+                }
+            }
+        }
+        PassiveAtStatThreshold {
+            mode less_or_equal
+            threshold {
+                int 0
+            }
+            passives {
+                BasicAttackCritChance 100%
+            }
+        }
+        PassiveAtStatThreshold {
+            mode less_or_equal
+            threshold {
+                int -10
+            }
+            passives {
+                ExtraMovePoints 1
+                ExtraBasicAttacks 1
+            }
+        }
+        DodgeChance 30%
+        SetSpellCosts 0
+        MakeSpellsRequireCharge 1
+        StatusOnTookDamage {
+            SpeedUp 2
+        }
+        StackingDodgeChanceOnTookDamage {
+            amount 10%
+            cap 50%
+        }
+        BoostWeaponDamage {
+            damage 3
+            crit_chance .5
+        }
+        EquipRandomTemporaryItemFromPool weapons
+        Brace 3
+        StatusOnKill {
+            StrengthUp 2
+            SpeedUp 2
+        }
+        ShoulderCheck 100%
+        WeaponDamageMultiplierBonus 2
+        AddSelfStatusToWeapons {
+            ChanceToBreak 50
+        }
+        CounterAttack ReflexPunchJab2
+        AlphaCat 1
+        StatusAnyCatAllyWhoKills {
+            AlphaCat 1
+        }
+        PassiveWhenTheAlpha {
+            TogglableRoundEndExtraTurn 1
+        }
+        StatusOnAllyCatDeath {
+            AllStatsUp 2
+            PercentHeal 50
+            TakeExtraTurn 1
+        }
+        KillsHeal 50%
+        StrengthForEachNeighboringEnemy 3
+        BraceForEachNeighboringEnemy 2
+        AllyDamageReaction attack
+        CapDamageFromAllies 1
+        StatusOnTookDamage {
+            RandomStatUp 1
+        }
+        ForceSpecificInjury int
+        StatusPerInjury {
+            injury int
+            cap 10
+            Shield 3
+            StrengthUp 1
+        }
+        //DualWield 1
+        //WeaponsDontLoseDurability 0
+        DoubleCastWeapons 2
+        Vengeful 1
+        RevengeDamage {
+            effects {
+                Marked 1
+            }
+        }
+        Brace 2
+        StatusOnDealtDamageThreshold {
+            threshold 10
+            count_overkill true
+            RefreshMovePoints 1
+            Shield 2
+            AllStatsUp 1
+        }
+        AddStatusToBasicAttack {
+            Bruise 2
+        }
+    }
+
+    shield 4
+
+    stat_mods.overwrite {
+        str 1
+        con 1
+        spd 6
+    }
+}
+
+Hunter {
+    innate_passives.append {
+        AddPassivesToMinions {
+            AddSpeed 4
+            AddStatusToBasicAttack {
+                Poison 2
+            }
+            AddStatusToBasicAttack {
+                Bleed 2
+            }
+        }
+        AddPassivesToCharmed {
+            AddSpeed 4
+            AddStatusToBasicAttack {
+                Poison 2
+            }
+            AddStatusToBasicAttack {
+                Bleed 2
+            }
+        }
+        SpawnOnBattleStart {
+            object CharmedFly
+            number 3
+        }
+        AddStatusToFirstBasicAttack {
+            Charmed 5
+        }
+        AddStatusToBasicAttack {
+            Charmed [1 .25]
+        }
+        TileDamageMultiplier {
+            multiplier 2
+            ally_multiplier 0
+        }
+        EquipTemporaryItem SleepDart2
+        StatusAlliesOnBattleStart {
+            EquipTemporaryItem SleepDart2
+        }
+        AddStatusToBasicAttack {
+            DistanceBonusDamage {
+                stacks 1
+                min_range 3
+            }
+        }
+        AddBonusRange 2
+        AddStatusToBasicAttackWithCooldown {
+            CharmedForceAttack 1
+        }
+        AddStatusToBasicAttack {
+            DamageOrHealConditionally 1
+        }
+        TowerDefenseReflex attack
+        ConsumablesInfiniteRange 1
+        BonusFoodEachBattle 20
+        AddAllyNeighborsToAbilityRange 1
+        AddStatusToBasicAttack {
+            SpawnBearTrapOnMiss 1
+        }
+        StatusOnTriggerTrap {
+            Quivered 1
+            DexterityUp 2
+        }
+        CatchProjectiles {
+            chance 50%
+            ally_chance 100%
+            Quivered 1
+            AllStatsUp 1
+        }
+        TrapEffectsMultiplier 2
+        AlliesAvoidTraps 1
+        BouncyProjectiles {
+            max_bounces 2
+            max_range 4
+        }
+        ParasitesArentCursed 1
+        SpawnOnBattleStart CharmedTinySpider
+        SpawnOnBattleStart CharmedTinySpider
+        SpawnOnBattleStart CharmedTinySpider
+        AddCritMultiplier 200%
+        CritsApplyStatus {
+            Stun [1 .33]
+        }
+        AddPassivesToMinions {
+            DamageUp 3
+            AddMaxHealth 10
+            HealthGain 10 //fill up the blank max health
+            AddStatusToBasicAttack {
+                Poison 1
+            }
+        }
+        AddPassivesToCharmed {
+            DamageUp 3
+            AddMaxHealth 10
+            AddStatusToBasicAttack {
+                Poison 1
+            }
+        }
+        Quiver 2
+        TowerDefense {
+            range 2
+            damage 2
+        }
+        BasicAttackAOEBonus 2
+        BasicAttackDamageMultiplier 50%
+        StatusEachTurnEnd {
+            ObjectOnHitCharacter {
+                stacks 2
+                object CharmedFlea
+            }
+        }
+        StatusEachTurnEndPerEnemyKill {
+            ObjectOnHitCharacter {
+                stacks 1
+                object CharmedFlea
+            }
+        }
+        StatusOnBattleEndIfKillThresholdMet {
+            kills 3
+            statuses {
+                PermanentDexterity 1
+                FindItemFromPool chapter
+            }
+        }
+        BonusRangeBasedOnDex 5
+        BonusHealthRegenBasedOnDex 5
+        StatusOnKillEnemy {
+            FillMana 1
+        }
+        AddStatusToBasicAttack {
+            ChangeTile {
+                tile BrambleTile
+                aoe 1
+            }
+        }
+        CritChanceUp 50
+        MissChance 25
+        RangedTrueShot 1
+        CritChanceUp 25
+        StatusOnCrit {
+            LuckUp 1
+        }
+    }
+
+    stat_mods.overwrite {
+        dex 3
+        con -1
+        spd -2
+        lck 5
+    }
+}
+
+Mage {
+    innate_passives.append {
+        AllyManaRegenAura {
+            stacks 1
+            range global
+        }
+        StatusAllyWhenAllySpendsMana {
+            threshold 7
+            AllStatsUp 1
+        }
+        StatusAlliesOnSpendMana {
+            ManaGain 1
+        }
+        MeleeRevengeDamage {
+            damage 3
+            effects {
+                Slow 2
+                Freeze [1, .15]
+                VisualFXTile IcePoof
+            }
+            elements [
+                Ice
+            ]
+        }
+        InnateElement Ice
+        ElementImmune Ice
+        StatusImmunity [Freeze, Slow]
+        FreezePiercing 1
+        Brace 2
+        AddStatusToBasicAttack {
+            Stun [1 .33]
+        }
+        AddDamageToBasicAttack 2
+        AddElementsToBasicAttack Electric
+        AddStartingMana 20
+        AddManaRegen 5
+        StatusEachTurnEnd {
+            EmptyMana 1
+        }
+        StatusOnTurnEndIfCastNSpells {
+            spells 1
+            DoubleCastSpell 2
+        }
+        StatusEachTurnBegin {
+            IntelligenceUp 1
+        }
+        ManaCostReduction 25%
+        StatusAfterCastSpell {
+            TempSpellDamageUp 1
+            TempDamageUp 1
+        }
+        StatusOnTurnEndIfManaExact {
+            mana 5
+            Shield 5
+            HealthGain 5
+            Temporary {
+                status KineticSpikes
+                stacks 5
+                turns 1
+                expires_on_end_turn true
+            }
+            Temporary {
+                status DamageUp
+                stacks 5
+                turns 1
+                expires_on_end_turn true
+            }
+        }
+        StatusWhenAllySpendsMana {
+            OneUseSpellDamageUp 2
+            ManaGain 2
+        }
+        ElementalAttunement {
+            Fire {
+                Burn X
+            }
+            Ice {
+                Slow X
+            }
+            Electric {
+                Stun [1 .1*X]
+            }
+            Earth {
+                damage X
+            }
+            Wind {
+                knockback X
+            }
+            Water {
+                AOEPuddle X-1
+            }
+            Grass {
+                Poison X
+            }
+            Holy {
+                FlatLeech X
+            }
+            /*Explosion { //Fireball has Explosion element so it makes the combo weird, explosion isnt really an element anyway
+                HitExplosion X
+            }
+            Musical {(cause that shows as an element icon on spells)
+            }*/
+            Gravity {
+                Weakness X
+            }
+            Shadow { //do we even have shadow spells?
+                crit_chance .05*X
+            }
+        }
+        ElementalManaCostReduction {
+            element [Fire Ice Electric Earth Wind Water Grass Holy Gravity]
+            reduction 2
+        }
+        AddStatusToBasicAttack {
+            Freeze [1 .5]
+            Slow 2
+        }
+        AddElementsToBasicAttack Ice
+        AddStatusToBasicAttack {
+            BigSplashDamage 2
+        }
+        AddBonusRange 2
+        AddBonusMeleeRange 2
+        DamageNeighborTilesWhenCastSpell {
+            triattack {
+                type spell
+                damage 2
+                effects {
+                    Burn 1
+                    //Freeze [1, .05] //this just conflicts with Burn
+                    Stun [1, .05]
+                    VisualFXTile IcePoof
+                    VisualFXTile BurnTrigger
+                    VisualFXTile WaterConduct
+                }
+                elements [
+                    Fire
+                    Ice
+                    Electric
+                ]
+            }
+        }
+        MeleeRevengeDamage {
+            damage 0
+            effects {
+                //Burn 1 //burn gets added here with the other effect
+                VisualFXTile BurnTrigger
+            }
+            elements [
+                Fire
+            ]
+        }
+        InnateElement Fire
+        ElementImmune Fire
+        StatusImmunity [Burn]
+        AddStatusToElementDamage {
+            element Fire
+            Burn 3
+        }
+        AddDamageToElementDamage {
+            element Fire
+            damage 2
+        }
+        StatusOnTurnEndIfManaExact {
+            mana 2
+            Quivered 1
+            MoveQuivered 1
+        }
+        StatusOnTurnEndIfCastNSpells {
+            spells 2
+            Quivered 1
+            MoveQuivered 1
+        }
+        StatusEachTurnEndForEachTurn {
+            RandomMagicMissile 1
+        }
+        StatusEachTurnEnd {
+            KineticSpikes 1
+        }
+        StatusOnTurnEndIfManaExact {
+            mana 0
+            FreeSpell 1
+            SpellDamageUp 1
+        }
+        StatusOnTurnEndIfManaExact {
+            mana 4
+            IntelligenceUp 1
+            SpellDamageUp 1
+            KineticSpikes 1
+            DivineShield 1
+        }
+        StatusEveryXTurnBegins {
+            turns 2
+            DivineShield 1
+        }
+        IncreaseSpellRange 5
+        AddSpellDamage 1
+        InnateElement Electric
+        ElementImmune Electric
+        LightningAspectCharge 1
+        ConjureCastSpellsForAllies 2
+        EnergyStorm {
+            period 3
+            cycle_start 2
+        }
+        AddStatusToBasicAttack {
+            Burn 3
+        }
+        AddElementsToBasicAttack Fire
+        ReplaceBasicAttack BasicMagicMissile
+        AddSelfStatusToBasicAttack {
+            RandomMagicMissile 1
+            RandomMagicMissile 1
+            RandomMagicMissile 1
+            RandomMagicMissile 1
+        }
+    }
+
+    divine_shield 1
+
+    stat_mods.overwrite {
+        str -1
+        con -1
+        int 2
+        cha 2
+    }
+}
+
+Medic {
+    innate_passives.append {
+        AddStatusToBasicAttack {
+            Conditional_Enemy {
+                Confusion 3
+                Stun [1 .5]
+            }
+            Conditional_Ally {
+                Shield 3
+                AllStatsUp [1 .5]
+            }
+        }
+        StatusEachTurnBegin {
+            RandomStatUp 3
+        }
+        HealthRegenUp 3
+        SmiteEnemiesWhoKill {
+            type spell
+            damage 10
+            effects {
+                Stun 1
+            }
+            elements [
+                Holy
+            ]
+        }
+        OverhealGainsBothShield 2
+        PassiveUntilGetKill {
+            HolyDamageBlessing {
+                damage_multiplier 3
+                Burn 3
+            }
+        }
+        ShareHealthRegen 1
+        HealthRegenUp 2
+        AllyUncappedHPAura 1
+        AutocastEachRound {
+            ability MedicObey2
+            force_display_name true
+            //even_if_stunned true
+        }
+        StatusAlliesOnGainCoins {
+            scaled true
+            LuckUp 1
+            HealthGain 1
+        }
+        StatusOnGainCoins {
+            DivineShield 1
+        }
+        StatusOnHeal {
+            SpeedUp 4
+            RandomStatUp 1
+        }
+        StatusOnKillEnemy {
+            DivineShield 1
+            RefreshMovePoints 1
+        }
+        HealsCanRevive 3
+        PassiveUntilCastSpell {
+            HealAlliesEachTurn {
+                stacks 3
+                mana 3
+                exclude_self false
+            }
+            StatusAlliesEachTurn {
+                exclude_self false
+                RandomStatUp 3
+            }
+        }
+        HealsAlsoRegenMana 50%
+        AddStatusToBasicAttack {
+            Conditional_Ally {
+                Cleanse 0
+                AllStatsUp 1
+            }
+        }
+        Eternal {
+            stacks 1
+            health_percent 50%
+            AllStatsUp 2
+            TakeExtraTurn 1
+        }
+        BoostHeals 4
+        HealAtStart 100%
+        EnemiesGetPickupsKnockedOut 2
+        TrinketPassiveMultiplierBonus 2
+        TrinketActiveEffectsMultiplierBonus 2
+        LowHealthAllyDodgeChanceAura {
+            theshold 5
+            chance 50%
+        }
+        AbilityOnBattleStart Heathens2
+        HolyDamageMultiplierBonus 1
+        HealDamagesEnemies 1
+        IncreaseHealingSpellRange 2
+        StatusAlliesOnKill {
+            AllStatsUp 1
+        }
+        StatusOnKill {
+            RefreshActPoints 1
+        }
+        Empath 100%
+        AddBonusRange 2
+        ReplaceBasicAttack BasicMedicRanged
+        SharePickups 1
+        SpawnOnBattleStart {
+            object RandomNonCoinPickup
+            number [2 4]
+        }
+    }
+
+    stat_mods.overwrite {
+        str 2
+        dex 3
+        con 2
+        int 1
+        spd 3
+        cha 3
+    }
+}
+
+Tank {
+    innate_passives.append {
+        Trample 9
+        StatusIfUnusedMovePoints {
+            MoveQuivered 2
+            Brace 1
+            Shield 2
+        }
+        ForceSpecificInjury spd
+        PassiveAtInjuryThreshold {
+            mode greater_or_equal
+            injury spd
+            threshold 4
+            passives {
+                Thorns 4
+                Trample 3
+                Brace 4
+                AllyBonusAbilityAura NubbyToss
+                NubbyTossPriority 1
+            }
+        }
+        AddStatusToAllDamage {
+            LeaveBehindRockOnKnockback 1
+        }
+        AddKnockbackToEverything 1
+        RevengeDamage {
+            effects {
+                Petrify [1, .2]
+            }
+        }
+        AddTag rock
+        InnateElement Earth
+        ElementImmune Fire
+        StatusImmunity [Burn]
+        KnockbackImmunity 1
+        RockDetector 10
+        SizeScale 1.3
+        Trample 3
+        //Brace 1
+        //Thorns 2
+        StatusOnTookDamage {
+            Shield 2
+        }
+        StatusIfUnusedMovePoints {
+            ConstitutionUp 2
+            HealthGain 8
+            ManaGain 5
+        }
+        FollowUp FollowUpDash2
+        ReplaceBasicMove BellyFlop_BasicMove
+        StatusOnBattleStart {
+            FullHeal 1
+        }
+        HealthRegenUp 4
+        AllyMoveAbilityAura CatapultJump2
+        CatAPultAnimation {
+            ability CatapultJump2
+            animation knockupatk
+        }
+        ProtectTargetedAllies SwapPositions_WideLoad2
+        Thorns 4
+        StatusOnTookDamage {
+            Thorns 1
+        }
+        StatusEachTurnEnd {
+            SpeedUp -2
+            RangeUp 1
+            StrengthUp 1
+            IntelligenceUp 1
+        }
+        PassiveAtStatThreshold {
+            mode less_or_equal
+            threshold {
+                spd 0
+            }
+            passives {
+                ExtraBasicAttacks 1
+            }
+        }
+        AddKnockbackDamage 3
+        AddStatusToBasicAttack {
+            Knockback 3
+        }
+        ReplaceSpawnedObjects [SmallRock AnimatedSmallLavaRock]
+        ReplaceSpawnedObjects [Boulder AnimatedLavaBoulder]
+        ReplaceSpawnedObjects [SmallLavaRock AnimatedSmallLavaRock]
+        ReplaceSpawnedObjects [LavaBoulder AnimatedLavaBoulder]
+        AddPassiveToSpawnedRocks {
+            JoinSpawnerFaction 1
+            AddFilledMaxHealth 7
+        }
+        SpawnOnBattleStart {
+            object Boulder
+            number 1
+        }
+        StatusReplacement [Petrify PetrifyCharmed]
+        AmplifyKnockback 10
+        AddStatusToKnockbackDamage {
+            Bruise 1
+        }
+        SecurityBotProtect {
+            ability attack
+            move move
+        }
+        ShovingMatch attack
+        AllyDamageReduction 0
+        AddStatusToBasicAttack {
+            Knockback 2
+        }
+        DamageReductionAura {
+            range global
+            allies_only true
+            stacks 2
+        }
+        TauntAlways 1
+        Brace 2
+        Thorns 2
+        HealthRegenUp 2
+        ChainKnockback 1
+        AddStatusToBasicAttack {
+            Knockback 1
+        }
+        AddKnockbackDamage 1
+        AmplifyKnockback 2
+        BonusAbility BonusToss2
+        ReplaceBasicAttackWhenCastable BasicSuplex
+        ExtraMovePoints 1
+    }
+
+    shield 8
+
+    stat_mods.overwrite {
+        dex -1
+        con 8
+        int -1
+        spd 10
+    }
+}
+
+Thief {
+    innate_passives.append {
+        CritsApplyStatus {
+            Conditional_HasStatus {
+                status Marked
+            } Else {
+                Marked 1
+            }
+        }
+        AddCritMultiplier 100%
+        AddStatusToBasicAttack {
+            BurgleCoin 1
+            KnockOutCoin 1
+            KnockOutCoin [1 .5]
+        }
+        AddStatusToBasicAttack {
+            Poison 1
+        }
+        PoisonMultiplier 2
+        StatusOnPickupCoins {
+            RefreshMovePoints 1
+            DexterityUp 1
+            SpeedUp 1
+        }
+        SpawnOnBattleStartRandomEmptyTile {
+            object Coin
+            number [2 3]
+        }
+                    CritChanceUp 25
+        			AddStatusToAllDamageAbilities {
+        				Weakness 2
+        				Piercing 1
+        			}
+        Stealth 1
+        StatusOnKill {
+            Stealth 1
+        }
+        ReplaceBasicAttackWhenCastable Shank2
+        SplittableMove 3
+        AddMovement 4
+        AfterImage PlayerCat_ThiefShade2
+        ReplaceSpawnedObjects [PlayerCat_ThiefShade PlayerCat_ThiefShade2]
+        AddStatusToBasicAttack {
+            Conditional_Adjacent {
+                BonusDamage 3
+                Bleed 2
+                BonusCritChance 50
+            }
+        }
+        CritChanceUp 25
+        CritsApplyStatus {
+            ObjectOnHitCharacter Coin
+            ObjectOnHitCharacter RandomPickup
+            ObjectOnHitCharacter RandomPickup
+        }
+        AddBonusRange 10
+        AddBonusMeleeRange 10
+        MakeBasicAttackPassThroughThings 1
+        AddStatusToBasicAttack {
+            Piercing 1
+        }
+        AddStatusToBasicAttack {
+            Bleed 1
+        }
+        AddStatusToAllDamageAbilities {
+            Bleed 1
+        }
+        ApplyStatusesToRandomEnemiesEachTurn {
+            count 2
+            Bounty 3
+        }
+        AddCritMultiplier 100%
+        StatusOnCrit {
+            LuckUp 1
+        }
+        CritsApplyStatus {
+            Bleed 1
+            Weakness 1
+        }
+        AlphaTurns 1
+        AllDamageCrits 1
+        BackstabCritChance 1
+        StatusOnCrit {
+            RandomStatUp 1
+        }
+        CritsApplyStatus {
+            Stun 1
+            Weakness 2
+        }
+        AddBonusRange 6
+        AddStatusToBasicAttack {
+            DistanceBonusDamage {
+                stacks 1
+                min_range 1
+            }
+        }
+        StatusOnGainCoins {
+            RandomStatusFromPool {
+                StatusGroup {
+                    SpawnCoinAnywhere 1
+                    SpawnCoinAnywhere 1
+                }
+                StatusGroup {
+                    SpeedUp 2
+                    LuckUp 2
+                    DexterityUp 2
+                }
+            }
+        }
+        ReplaceBasicMove Shadowstep
+        ExtraMovePoints 1
+        CoinsAddDamage 2
+        AddTemporaryEffectsToBasicAttack {
+            CastAgain 2
+        }
+        BasicAttackDamageMultiplier 33.333334%
+        //BasicAttackMultiplicity 1
+        StatusOnKill {
+            RefreshMovePoints 1
+            RefreshActPoints 1
+        }
+        CollectPickupsOnBattleEnd {
+            pop_corpses true
+        }
+    }
+
+    stat_mods.overwrite {
+        str -1
+        con -1
+        spd 4
+        lck 1
+    }
+}
+

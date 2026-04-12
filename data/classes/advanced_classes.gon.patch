@@ -1,0 +1,854 @@
+﻿Monk {
+    innate_passives.append {
+        GainExtraShield 2
+        StatusOnEndMove {
+            ForceAttack 1
+        }
+        ExtraMovePoints 1
+        ChanceToBlockAndCounter 33%
+        StatusOnTookDamageFromEnemyAbility {
+            Quivered 1
+            MoveQuivered 1
+        }
+        StatusOnStanceSwitch {
+            ForceUseAbility RapidFlowSpin2
+        }
+        ScaledStatusOnLoseShield {
+            Thorns 1
+        }
+        AddBonusRange 1
+        AddBonusMeleeRange 1
+        SpreadPainBonus 2
+        SpreadPainBonusCrit 1
+        AddStatusToBasicAttack {
+            MagicWeakness 2
+        }
+        AddSelfStatusToBasicAttack {
+            RandomMagicMissile 1
+            RandomMagicMissile 1
+        }
+        AddStatusToBasicMeleeAttack {
+            Bruise 1
+            Confusion 1
+            Stun [1 .15]
+        }
+        PassiveIfEmptyHead {
+            StatusOnStanceSwitch {
+                RandomMagicMissile 1
+            }
+        }
+        PassiveIfEmptyNeck {
+            StatusOnStanceSwitch {
+                RandomMagicMissile 1
+            }
+        }
+        PassiveIfEmptyFace {
+            StatusOnStanceSwitch {
+                RandomMagicMissile 1
+            }
+        }
+        PassiveIfAllArmorEmpty {
+            StatusOnStanceSwitch {
+                RandomStatUp 1
+            }
+            AddSpellDamage 1
+        }
+        CobraReflex BasicMonkMelee
+        CobraReflex BasicMonkMelee
+        PassiveIfEmptyHead {
+            DodgeChance 15%
+        }
+        PassiveIfEmptyNeck {
+            DodgeChance 15%
+        }
+        PassiveIfEmptyFace {
+            DodgeChance 15%
+        }
+        PassiveIfAllArmorEmpty {
+            ExtraMovePoints 1
+            Flying 1
+        }
+        CCImmunity 1
+        DebuffImmunity 1
+        KnockbackImmunity 1
+        PassiveIfEmptyHead {
+            KineticSpikes 1
+        }
+        PassiveIfEmptyNeck {
+            KineticSpikes 1
+        }
+        PassiveIfEmptyFace {
+            KineticSpikes 1
+        }
+        PassiveIfAllArmorEmpty {
+            ManaCostReduction 1
+            AddSpellDamage 2
+        }
+        PassiveWhileInMonkRangedStance {
+            AddBonusRange 2
+            KineticSpikes 2
+            AddSpellDamage 2
+        }
+        PassiveWhilePreviewingMonkRangedStance {
+            AddBonusRange 2
+        }
+        PassiveWhileInMonkMeleeStance {
+            Brace 2
+            HealthRegenUp 2
+        }
+        PassiveIfEmptyHead {
+            CritChanceUp 10
+            AddCritMultiplier 40%
+        }
+        PassiveIfEmptyNeck {
+            CritChanceUp 10
+            AddCritMultiplier 40%
+        }
+        PassiveIfEmptyFace {
+            CritChanceUp 10
+            AddCritMultiplier 40%
+        }
+        PassiveIfAllArmorEmpty {
+            CounterAttack attack
+            CritsApplyStatus {
+                Bruise 1
+            }
+        }
+        StatusOnStanceSwitch {
+            NextBasicAttackCritsThisTurn 1
+        }
+        CritsApplyStatus {
+            Confusion 1
+        }
+        AddStatusToBasicMeleeAttack {
+            FaceAway 1
+            Confusion 1
+            Stun [1 .2]
+        }
+        AddStatusToMeleeDamage {
+            DelayedWindCone {
+                distance 10
+            }
+        }
+        StatusOnGainShield {
+            Temporary {
+                status Brace
+                stacks 1
+                turns 1
+                expires_on_begin_turn true
+            }
+        }
+        AddStatusToBasicAttack {
+            ApplyToSource {
+                Shield 1
+            }
+        }
+        StatusOnDealtDamage {
+            TempStrengthUp 2
+            TempDexterityUp 2
+            TempLuckUp 2
+        }
+        StatusOnCrit {
+            Shield 3
+        }
+        CritChanceUp 25
+        StatusOnStanceSwitch {
+            Shield 3
+            PartialCleanse 1
+        }
+    }
+
+    shield (8 + 4)
+
+    empty_armor_scaled_stats { //hard coded in CatData::get_bonus_stats and Character::recompute_item_effects
+        spd 2
+    }
+    empty_armor_scaled_stats { //hard coded in CatData::get_bonus_stats and Character::recompute_item_effects
+        int 1
+        cha 1
+    }
+
+    stat_mods.overwrite {
+        str 1
+        dex 1
+        int 2
+        cha 2
+    }
+}
+
+Butcher {
+    innate_passives.append {
+        Trample 3
+        MoveQuivered 2
+        AddStatusToTrampleDamage {
+            Cleave 1
+        }
+        ScaledStatusOnOverHealed {
+            SpawnScaledRotFly 1
+        }
+        schadenfreude_scaled_stats { //hard coded in CatData::get_bonus_stats and Character::recompute_item_effects
+            str 2
+            dex 2
+            con 2
+            int 2
+            cha 2
+            spd 2
+            lck 2
+        }
+        StatusOnEatFood {
+            StrengthUp 1
+            RandomStatUp 1
+        }
+        MoveTowardsDamageSource {
+            move_ability TrampleMove
+            move_far false
+        }
+        ReplaceBasicAttack BasicButcherMeleeWideDoubleSpin
+        SpawnThingOnDamage {
+            object Food
+        }
+        SpawnMeatOnMove Food
+        AddStatusToBasicAttack {
+            Rot -999999
+        }
+        AddStatusToBasicAttack {
+            Conditional_Shielded {
+                BonusCritChance 100
+            }
+            ApplyStatusIfCrit {
+                Purge 0
+            }
+        }
+        AddCritMultiplier 100%
+        StatusOnOverHealed {
+            StrengthUp 1
+            CurrentWeaponDamageUp 1
+        }
+        StatusOnTookDamage {
+            MovementUp 1
+        }
+        ExtraWeaponAttacks 2
+        BoostWeaponDamage 1
+        AddStatusToWeapons {
+            Cleave 1
+        }
+        LobbedHook 2
+        EquipTemporaryItem ButcherHook_Temporary //equips a hook for classes that don't innately have one
+        UpgradeSpawnedPickups 2
+        StatusOnTookDamage {
+            StrengthUp 1
+            ConstitutionUp 1
+            SpeedUp 1
+        }
+        BoostWeaponDamage 5
+        AddStatusToWeapons {
+            Bleed 1
+        }
+        CharmAllFlies 1
+        FlyDamageIncrease 4
+        AmplifyStatus Rot
+        StatusOnTookDamage {
+            TempDamageUp 1
+            DamageUp 1
+        }
+        StatusOnOverHealed {
+            ForceUseAbility_NonStack Indigestion_Fart2
+        }
+        MovementReaction {
+            ability weapon
+            enemies_only true
+        }
+        BoostWeaponDamage 2
+        UncappedHP 1
+        UncappedHPBonusStr 5
+        AllyBonusAbilityAura {
+            ability Bowl2
+            square true
+        }
+        AddHiddenTag bowling_ball
+        DukeOfFlies 1
+        AddStatusToBasicAttack {
+            BounceObject AllyRotFly
+        }
+        AddStatusToWeapons {
+            PullSourceToKnockbackImmuneTarget 1
+        }
+        RefreshMoveOnWeaponConnect 1
+    }
+
+    stat_mods.overwrite {
+        str 2
+        con 3
+        spd -2
+    }
+}
+
+Druid {
+    innate_passives.append {
+        HolyShieldTransferToTaggedMinions any
+        AddPassivesToMinions {
+            tag_filter crow
+            HolyShieldTransferToSpawner 1
+        }
+        AddPassivesToMinions {
+            HealthRegenUp 3
+            UncappedHP 1
+        }
+        ReplaceSpawnedObjects [Crow2 Crow3]
+        ReplaceSpawnedObjects [Crow Crow3]
+        ManaCostReductionTagged {
+            tag musical
+            reduction 50%
+        }
+        StatusOnUseAbilityWithTag {
+            tag musical
+            RandomStatUp 1
+            HealthGain 1
+        }
+        FlowersOnEndTurn 4
+        AllyHealthRegenAura {
+            stacks 2
+            range global
+        }
+        AllyManaRegenAura {
+            stacks 2
+            range global
+        }
+        AddPassivesToMinions {
+            ForceAttack 1
+            TakeExtraTurn 1
+        }
+        BonusAbility FeralMelee
+        Brace 1
+        StatusOnTookDamage {
+            Temporary {
+                status Brace
+                stacks 2
+                expires_on_begin_turn true
+            }
+            Temporary {
+                status Thorns
+                stacks 2
+                expires_on_begin_turn true
+            }
+        }
+        SpecialFriends {
+            AllStatsUp 2
+            HealthGain 8 //fill up the blank max health
+        }
+        ManaCostReductionTagged {
+            tag summon
+            reduction 50%
+        }
+        PoisonThorns 2
+        AddPassivesToMinions {
+            PoisonThorns 2
+        }
+        StatusOnUseAbilityWithTag {
+            tag shapeshift
+            Conditional_FirstApplicationThisTurn {
+                TakeExtraTurn 1
+                AllStatsUp 1
+            }
+        }
+        FreePathfindElement Grass
+        GrassTileHealing 1
+        TileTrail GrassTile
+        AddPassivesToMinions {
+            FreePathfindElement Grass
+            GrassTileHealing 1
+        }
+        BasicAttackAOEBonus 2
+        AddDamageToBasicAttack 2
+        BasicAttackStatusSwap [TempDamageUp DamageUp]
+        MegaMinions {
+            stacks 3
+            cycle_start 3
+        }
+        AddStatusToBasicAttack {
+            Conditional_Ally {
+                TempSpeedUp 4
+            }
+            Conditional_Enemy {
+                Confusion 2
+            }
+        }
+        WaterWalk 1
+        FreePathfindElement Water
+        PassiveWhenAffectedByElement {
+            element water
+            passives {
+                StatusEachTurnEnd {
+                    NonStackingDivineShield 1
+                }
+                HealthRegenUp 1
+                AddManaRegen 1
+            }
+        }
+        AddPassivesToMinions {
+            WaterWalk 1
+            FreePathfindElement Water
+            PassiveWhenAffectedByElement {
+                element water
+                passives {
+                    StatusEachTurnEnd {
+                        NonStackingDivineShield 1
+                    }
+                    HealthRegenUp 1
+                    AddManaRegen 1
+                }
+            }
+        }
+        FlowerPowerAuraStrength 1
+        FlowerPowerAuraBrace 1
+        TileTrail FlowerTile
+        AddPassivesToMinions {
+            FamiliarBonusAbility FamiliarSelfDestruct2
+        }
+        FamiliarSecondaryDamageImmunity 1
+        AddPassivesToMinions {
+            DivineShield 1
+        }
+        AddPassivesToMinions {
+            StatusAlliesOnKill {
+                DamageUp 1
+                HealthGain 5
+            }
+            StatusOnKill {
+                DamageUp 1
+                HealthGain 5
+            }
+        }
+        StatusOnUseAbilityWithTag {
+            tag musical
+            exclude_basicattack true
+            RefreshActPoints 1
+        }
+        ManaCostReductionTagged {
+            tag musical
+            reduction 1
+        }
+        AddPassivesToMinions {
+            DamageUp 2
+            Quivered 1
+        }
+        StatusOnUseAbilityWithTag {
+            tag shapeshift
+            DamageUp 1
+            RefreshActPoints 1
+        }
+    }
+
+    divine_shield 1
+
+    stat_mods.overwrite {
+        str 4
+        con 2
+        spd 2
+        cha 5
+        lck 1
+    }
+}
+
+Tinkerer {
+    innate_passives.append {
+        StatusOnCollectPickup {
+            Tech 1
+        }
+        SpawnOnBattleStartRandomEmptyTile {
+            object RandomPickup
+            number 10
+        }
+        EquipmentSetBonusBonus 2
+        AbsorbManaAura 1
+        UncappedMana 1
+        LightningRod 1
+        AddDamageToElementDamage {
+            element Electric
+            damage 2
+        }
+        Conductor 2
+        ConductorManaRegen 2
+        ExtraWeaponAttacks 1
+        ExtraTrinketUses 1
+        IncreaseItemUsesOnEquip 1
+        StatusOnTookDamageFromAbility {
+            DiminishingHealthRegen 1
+        }
+        StatusOnTookDamage {
+            DiminishingHealthRegen 1
+        }
+        AddWeaponScaling 1
+        WeaponCountsAsBasicAttack 1
+        ExtraWeaponAttacks 1
+        EMP {
+            spell_graphics_override {
+                particle WaterConduct
+                center_particle WaterConduct
+                area_particle WaterConduct
+                palette -1
+            }
+            status_explosion_override WaterConduct
+        }
+        SafeExplosions 1
+        IncreaseExplosionDamage 2
+        AddPassivesToMinions {
+            EMP {
+                spell_graphics_override {
+                    particle WaterConduct
+                    center_particle WaterConduct
+                    area_particle WaterConduct
+                    palette -1
+                }
+                status_explosion_override WaterConduct
+            }
+            SafeExplosions 1
+            IncreaseExplosionDamage 2
+        }
+        StatusOnBattleEnd {
+            FindItemFromPool chapter
+        }
+        AutoEquipConsumables 1
+        IncreaseExplosionSize 1
+        ExplosionImmunity 1
+        IncreaseExplosionDamage 2
+        AddPassivesToMinions {
+            IncreaseExplosionSize 1
+        }
+        StatusOnCastSpell {
+            CurrentWeaponDamageUp 1
+        }
+        StatusEveryXSpellCasts {
+            stacks 3
+            RepairWeapon 1
+            RepairWeaponCondition 1
+        }
+        Tech 1
+        MinimumTech 1
+        CapTechSpent 0
+        ReplaceBasicAttackWhenCastable Hone2
+        EquipmentPassiveMultiplierBonus 1
+        AddTemporaryEffectsToEquipment {
+            CastAgain 1
+        }
+        AddStatusToElementDamage {
+            element Electric
+            Conditional_Corpse {
+                OverrideDamage 0
+                Revive 1
+                TakeExtraTurn 1
+                Charmed 1
+                SafeDoomed 1
+                DamageUp 2
+                SpeedUp 8
+            }
+        }
+        BoobyTrapItems {
+            on_throw {
+                HitExplosion 10
+            }
+            on_break {
+                SafeExplosionIfHitSomething 10
+            }
+        }
+        RobotsInheritArmor 2
+        AlternateCraftingPools {
+            tinkerer_0 tinkerer_0_bombs
+            tinkerer_1 tinkerer_1_bombs
+        }
+        ExtraBasicAttacks 1
+        StatusOnTookDamage {
+            Craft {
+                pool tinkerer_default
+                slot random_empty_armor_or_weapon
+            }
+            Shield 1
+        }
+        PermanentItems 2
+        EscapeSequence {
+            SafeExplosionIfHitSomething 10
+            RandomDistanceDisplace 20
+        }
+        AddStatusToExplosions {
+            AddElement Napalm
+            AddElement Fire
+            Burn 3
+        }
+        AddPassivesToMinions {
+            AddStatusToExplosions {
+                AddElement Napalm
+                AddElement Fire
+                Burn 3
+            }
+        }
+        DamageNeighborsAfterMove {
+            type spell
+            damage X
+            effects {
+                Stun [1, .05*X]
+                VisualFXTile WaterConduct
+            }
+            elements [
+                Electric
+            ]
+        }
+        StatusOnBreakItem {
+            Thorns 2
+            Shield 3
+        }
+    }
+
+    stat_mods.overwrite {
+        int 4
+        cha -1
+        lck -1
+    }
+}
+
+Necromancer {
+    innate_passives.append {
+        SpawnOnBattleStart {
+            object BeefyCharmedLeech
+            number 4
+        }
+        AddStatusToBasicAttack {
+            Leech 1
+        }
+        AddStatusToSpells {
+            LeechPercent 50
+        }
+        AddStatusToWeapons {
+            LeechPercent 50
+        }
+        NoReflection 1
+        InfiniteRebirth {
+            health 25%
+            playercat_health 100%
+            TempSpeedUp 10
+        }
+        SpawnThingOnDamage {
+            object CharmedLeech
+            good false //its bad from the perspective of the thing attacking you, for luck calculations (this is how it works I dont know why I did it like this)
+            spawn_on_death_hit false
+        }
+        AddStatusToBasicAttack {
+            BounceObject CharmedLeech
+        }
+        EquipTemporaryItem Necro_SoulDagger_Uncharged
+        ExtraWeaponAttacks 1
+        DamageEnemiesOnHeal 2
+        StatusOnHealed {
+            Thorns 1
+        }
+        StatusKillers {
+            Conditional_Boss {
+                Stun 3
+            }
+            Conditional_NotBoss {
+                Conditional_Enemy {
+                    Conditional_PartyMember {
+                        Charmed 5
+                    } Else {
+                        PermanentCharm 1
+                        FactionConversion 1
+                        CaptureFamiliar 1
+                    }
+                }
+            }
+        }
+        SpawnThingOnDeath CharmedDemonKitten
+        SpawnThingOnDeath CharmedDemonKitten
+        StatusKilledCharacters {
+            AutoReanimate 100%
+        }
+        SpreadExtraDebuffs 2
+        ManaRegenMultiplierIfManaEmpty 2
+        BonusAbility SlitWrists
+        AddStatusToBasicAttack {
+            LuckUp -1
+            Fear [1 .25]
+        }
+        StatusDamagers {
+            LuckUp -1
+            Fear [1 .25]
+        }
+        DeathRattle {
+            ability LastGasp2
+            pop_corpse false
+        }
+        BonusAbility Seppuku
+        StatusAlliesOnDeath {
+            AllStatsUp 1
+            TakeExtraTurn 1
+        }
+        InjuryImmunity 1
+        AddStatusToBasicAttack {
+            SoulLink 1
+        }
+        AbilityOnBattleStart RandomSoulLink
+        SpawnOnBattleStart {
+            number [3 4]
+            object chapter_corpse_medium
+        }
+        SpawnObjectOnPopCorpse Food
+        StatusOnPopCorpse {
+            HealthGain 8
+        }
+        StatusOnHealed {
+            RandomStatusFromPool {
+                ObjectOnHitCharacter CharmedLeech
+                ObjectOnHitCharacter BeefyCharmedLeech
+            }
+        }
+        ImmortalLeeches 1
+        AddStatusToBasicAttack {
+            Leeches 1
+        }
+        ForceSpecificInjury lck
+        ReviveOnWin 100%
+        AddCorpseHealth 999999
+        StatusAlliesScaledByCursedOnDeath {
+            max 10
+            LuckUp 1
+        }
+        NumbingLeeches 3
+        AddStatusToBasicAttack {
+            ManaLeeches 1
+        }
+        AddStatusToBasicAttack {
+            BounceObject BeefyCharmedLeech
+        }
+        AutocastEachRound {
+            ability RaiseTheDead2
+            even_if_stunned true
+        }
+        AbilityOnBattleStart RandomReap2
+        StatusAlliesOnDeath {
+            triggers_limit 1
+            Reanimate 100%
+        }
+        ReplaceBasicAttackWhenDead Haunt
+        ReplaceSpellsWhenDead Spook
+        AddCorpseHealth 6
+    }
+
+    stat_mods.overwrite {
+        str -2
+        con 2
+        cha 1
+    }
+}
+
+Psychic {
+    innate_passives.append {
+        AutocastEachTurnBegin MindCrack_EldritchVisage2
+        DamageEnemiesOnKill 2
+        Flying 1
+        ExtraMovePoints 1
+        StatusOnUseElementAbility {
+            element Gravity
+            SpeedUp 2
+        }
+        ElementalManaCostReduction {
+            element Gravity
+            reduction 2
+        }
+        ChanceToBackflip {
+            ability BlinkDodge
+            chance 50%
+        }
+        AllyMultiplyKnockbackDamage 2
+        AllyMultiplyKnockbackDistance 2
+        AllyChainKnockback 1
+        FullPower 3
+        BonusAbility GrowHead
+        BasicAttackDamageMultiplier 0
+        ExtraBasicAttacks 2
+        Quivered 5
+        StatusOnOverMana {
+            SpellDamageUp 1
+            IntelligenceUp 1
+            DivineShield 1
+        }
+        StatusThingsKnockedBack {
+            Drag 2
+        }
+        StatusEveryXSpellCasts {
+            stacks 6
+            AllStatsUp 1
+            ReduceManaCost 1
+            SpellDamageUp 1
+        }
+        StatusOnCastSpell {
+            Charge 2
+        }
+        AddStatusToElementAbilities {
+            element Gravity
+            ChangeTile FloatingGlassTile
+            Bleed 1
+        }
+        EachSpellFreeAtFullMana 1
+        RemoveLineOfSightRestrictions 1
+        ShowHiddenThings 1
+        RevengeDamage {
+            knockback 10
+            effects {
+                Immobile 1
+            }
+        }
+        AddStatusToAllDamage {
+            Blind 1
+        }
+        ForceSpecificInjury cha
+        PassiveWhenAtFullMana {
+            AddStatusToBasicAttack {
+                Madness 1
+            }
+        }
+        PassiveAtStatThreshold {
+            mode less_or_equal
+            threshold {
+                cha 0
+            }
+            passives {
+                ExtraBasicAttacks 2
+            }
+        }
+        RevengeDamage {
+            effects {
+                Madness 1
+            }
+        }
+        LineOfSightTrueSightAura .5
+        ScaledStatusOnOverMana {
+            RandomMagicMissile 1
+            Cleanse 0
+        }
+        GravityWell {
+            damage 5
+            cant_miss true
+            type status
+            effects {
+                Stun 1
+            }
+            elements [
+                Gravity
+            ]
+        }
+        PassiveWhenAtFullMana {
+            Brace 3
+            Flying 1
+            AddMovement 20
+            ReplaceBasicMove Teleport
+        }
+        UncappedMana 1
+    }
+
+    stat_mods.overwrite {
+        con -1
+        int 5
+        spd 1
+        cha 1
+    }
+}
+
