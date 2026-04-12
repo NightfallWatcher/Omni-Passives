@@ -1,6 +1,6 @@
 # Omni Passives
 
-This mod automatically grants all passive abilities associated with a class archetype. It keeps each cat linked to its own class pool (Tank gets Tank pool, Mage gets Mage pool, etc.) and applies upgraded passive behavior at run start.
+This mod automatically grants all passive abilities associated with a class archetype. For example, if a cat is assigned the Tank role, it will gain every Tank-related passive from classes such as Druid, Necromancer, Fighter, and more.
 
 ## Compatibility
 
