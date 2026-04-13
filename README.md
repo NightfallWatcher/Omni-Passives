@@ -5,7 +5,7 @@ This mod automatically grants all passive abilities associated with a class arch
 ## Compatibility
 
 - Game version: `v1.0.20622`
-- Author: `Nightfaller`
+- Author: `NightOwl`
 
 ## What Is Included
 
