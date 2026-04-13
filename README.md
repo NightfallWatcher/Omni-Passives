@@ -22,7 +22,7 @@ This mod automatically grants all passive abilities associated with a class arch
 - Necromancer
 - Psychic
 
-## Exclusions For Stability
+## Exclusions
 
 - Colorless/no-class passives
 - Disorders and hereditary/event/mutation disorder systems
