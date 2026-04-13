@@ -12,7 +12,7 @@ This mod automatically grants all passive abilities associated with a class arch
 - Fighter
 - Hunter
 - Mage
-- Medic (Cleric)
+- Cleric
 - Tank
 - Thief
 - Monk
