@@ -26,15 +26,9 @@ This mod automatically grants all passive abilities associated with a class arch
 
 - Colorless/no-class passives
 - Disorders and hereditary/event/mutation disorder systems
-- `Glutton` (excluded to prevent an infinite consumable/fly generation loop and severe lag)
+- `Glutton`
 - `SneakAttack`
 - `RepressedMemories`
-- `Beckon`
-- `DeathChill`
-- `EyeCatchin`
-- `LongStrider`
-- `VersatileVocalist`
-- `HardHead`
 
 ## Basic Usage
 
