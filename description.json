@@ -1,6 +1,6 @@
 {
     "title": "Omni Passives",
-    "description": "This mod automatically grants all passive abilities associated with a class archetype while keeping each class tied to its own class passive pool.",
+    "description": "This mod automatically grants all passive abilities associated with a class archetype.",
     "author": "Nightfaller",
     "version": "0.3.2"
 }
